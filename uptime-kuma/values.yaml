@@ -1,0 +1,90 @@
+# -- Count of replicas
+replicaCount: 1
+
+image:
+  # -- image name
+  repository: "louislam/uptime-kuma"
+  pullPolicy: "IfNotPresent"
+  # -- version of uptime-kuma. This chart has a default version
+  tag: "1.10.0"
+  # If you are using your own registry create a secret to pull the image
+  # set also username and password
+  registry:
+  username:
+  password:
+
+persistentVolume:
+  # -- StorageClass to use for the pvc
+  storageClassName:
+  # -- Storage size
+  size: "50Gi"
+
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: false
+  annotations: {}
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+service:
+  type: ClusterIP
+  # -- uptime-kuma port
+  port: 3001
+
+ingress:
+  enabled: false
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    kubernetes.io/tls-acme: "true"
+    # -- If you would like to add an acl use this annotation, specify here the ip addresses
+    nginx.ingress.kubernetes.io/whitelist-source-range: ""
+    # -- If you would like to add custom http errors, specify here the error codes
+    nginx.ingress.kubernetes.io/custom-http-errors: ""
+  hosts:
+      # -- set the domain for this app
+    - host: chart-example.local
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          serviceName: uptime-kuma
+          servicePort: 443
+  tls:
+   - secretName: uptime-kuma-tls
+     hosts:
+       - chart-example.local
+
+resources:
+  limits:
+    cpu: 100m
+    memory: 128Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
