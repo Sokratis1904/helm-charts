@@ -6,7 +6,7 @@ image:
   repository: "louislam/uptime-kuma"
   pullPolicy: "IfNotPresent"
   # -- version of uptime-kuma. This chart has a default version
-  tag: "1.10.0"
+  tag: "1.10.2"
   # If you are using your own registry create a secret to pull the image
   # set also username and password
   registry:
