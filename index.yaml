@@ -2,10 +2,10 @@ apiVersion: v1
 entries:
   uptime-kuma:
   - apiVersion: v2
-    appVersion: 1.10.0
-    created: "2021-11-08T18:06:54.8049196+01:00"
+    appVersion: 1.10.2
+    created: "2021-11-11T17:01:44.2218048+01:00"
     description: A Helm chart for the fancy monitoring tool uptime-kuma
-    digest: 4b8971dd394579e4c5fc15f3ebaa54a870941c4940098f10d3eafd509025c443
+    digest: 4337489a7aaa1681fdc25cc3c2585a2e04b52b86d1e24e505a23632757f845c0
     home: https://github.com/louislam/uptime-kuma
     icon: https://github.com/louislam/uptime-kuma/raw/master/public/icon.svg
     maintainers:
@@ -14,6 +14,6 @@ entries:
     name: uptime-kuma
     type: application
     urls:
-    - https://github.com/Sokratis1904/helm-charts/uptime-kuma-0.1.0.tgz
-    version: 0.1.0
-generated: "2021-11-08T18:06:54.8029195+01:00"
+    - https://sokratis1904.github.io/helm-charts/packages/uptime-kuma-0.1.1.tgz
+    version: 0.1.1
+generated: "2021-11-11T17:01:44.2188462+01:00"
